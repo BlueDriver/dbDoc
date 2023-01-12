@@ -1,0 +1,56 @@
+<idea-plugin>
+    <id>com.github.dbDoc</id>
+    <name>dbDoc</name>
+    <version>0.1</version>
+    <vendor email="cpwu@foxmail.com" url="https://github.com/BlueDriver">BlueDriver</vendor>
+
+    <description><![CDATA[
+        [1].Generate DB table document with Markdown.<br>
+        [2].Generate Entity's setter code from Selected table.<br>
+    ]]></description>
+
+    <!--<change-notes><![CDATA[-->
+        <!--Right click on the table in idea database tool,and choose 'mybatis generate' to generate files.-->
+    <!--]]>-->
+    <!--</change-notes>-->
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+<!--    <depends optional="false">com.intellij.modules.ultimate</depends>-->
+    <!--<depends>com.intellij.modules.lang</depends>-->
+<!--    <depends>com.intellij.modules.java</depends>-->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.database</depends>
+    <!--运行起来就可以了，必须是专业版的-->
+    <!--这个依赖在database-impl里面-->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="dbDocMenu" text="dbDoc" popup="true" icon="/icon/send.png">
+            <add-to-group group-id="DatabaseViewPopupMenu" anchor="last"/>
+            <action id="dbDocAction" class="db.doc.action.DocAction" text="Generate Tables' Doc"
+                    description="Generate DB table doc with Markdown">
+                <!--<add-to-group group-id="EditorPopupMenu" anchor="last"/>-->
+                <!--<add-to-group group-id="GenerateGroup" anchor="last"/>-->
+            </action>
+            <action id="dbDocAction.setter" class="db.doc.action.DocSetterAction" text="Generate Entity's Setter"
+                    description="Generate all setter code for the Entity object">
+            </action>
+            <!--<action id="dbDocAction.db2Excel" class="db.doc.action.Db2Excel" text="Db2Excel">-->
+            <!--</action>-->
+            <!--<action id="dbDocAction.TestAction" class="db.doc.action.TestAction" text="TestAction">-->
+            <!--</action>-->
+        </group>
+    </actions>
+
+</idea-plugin>
